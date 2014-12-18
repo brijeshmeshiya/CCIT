@@ -67,49 +67,42 @@ if(h==NULL || h->next==NULL)
 else
 {
 struct node *slow,*fast;
-slow=h;
-fast=h->next;
+slow=h->next;
+fast=h->next->next;
 while(slow!=NULL && fast!=NULL && slow!=fast)
 {
 slow=slow->next;
 fast=fast->next;
 if(fast!=NULL)
+{
 	fast=fast->next;
+}
+else
+	return NULL;
 }
 if(fast==NULL || slow==NULL)
 	return NULL;
-else
+else if(slow==fast)
 	return slow;
 }
 }
 
 void printloop(struct node *h)
 {
-struct node *temp = detectloop(h),*tmp;
+struct node *temp,*tmp=NULL;
 int counts=0;
+temp=detectloop(h);
 if(temp!=NULL)
 {
-tmp=temp;
-temp=temp->next;
-counts++;
-while(tmp!=temp)
-{
-counts++;
-temp=temp->next;
-}
-temp=h;
-while(counts>0)
-{
-temp=temp->next;
-counts--;
-}
 while(h!=temp)
 {
 h=h->next;
-tmp=temp;
 temp=temp->next;
 }
-if(tmp!=NULL)
+tmp=temp->next;
+while(tmp->next!=h)
+	tmp=tmp->next;
+if(tmp->next==h)
 	tmp->next=NULL;
 printf("Loop at Value : %d\n",temp->data);
 }

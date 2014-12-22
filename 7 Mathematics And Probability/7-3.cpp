@@ -41,16 +41,9 @@ int main()
 	else
 	{	
 		cout<<"Lines will Intersect"<<endl;
-		if(x1!=0)
-			c1=y1/(slopexy*x1);
-		else if(x2!=0)
-			c1=y2/(slopexy*x2);
-		if(p1!=0)
-			c2=q1/(slopepq*p1);
-		else if(p2!=0)
-			c2=q2/(slopepq*p2);
-		if((x1!=0 || x2!=0) && (p1!=0 || p2!=0))
-			intersect(slopexy,c1,slopepq,c2);
+		c1=y1-x1*slopexy;
+		c2=q1-p1*slopepq;
+		intersect(slopexy,c1,slopepq,c2);
 	}
 	return 0;
 }

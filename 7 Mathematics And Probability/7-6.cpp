@@ -46,17 +46,5 @@ int main()
         	}
         }
     }
-    for(int i=0;i<size;i++)
-	{
-		for(int j=0;j<size;j++)
-		{
-			if(i!=j)
-			{
-				slopexy=slope(points[i][0],points[i][1],points[j][0],points[j][1]);
-				c1=points[i][1]-slopexy*points[i][0];
-				if(maximumslope==slopexy && maximumc==c1)
-					cout<<"Points : ("<<points[i][0]<<","<<points[i][1]<<") ("<<points[j][0]<<","<<points[j][1]<<")"<<endl;
-			}
-		}
-	}
+    cout<<"Line is Y = "<<maximumslope<<" * X + "<<maximumc<<endl;
 }

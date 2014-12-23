@@ -120,7 +120,8 @@ void expression_maker(string s,bool result,int paran)
 			while(i+count<j && (s.at(i+count)!='|' || s.at(i+count)!='&' || s.at(i+count)!='^')){
 				count++;
 			}
-			expression_maker(s.substr(0,i+1)+"("+s.substr(i+1,count)+")"+s.substr(i+count),result,paran-1);
+			if(count>3)
+				expression_maker(s.substr(0,i+1)+"("+s.substr(i+1,count)+")"+s.substr(i+count),result,paran-1);
 			}
 		i++;
 		}
